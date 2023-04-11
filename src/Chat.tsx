@@ -39,7 +39,7 @@ export function Chat({ socket, username, room}:any) {
   return (
     <div className="chat-window">
       <div className="chat-header">
-        <p>Live Chat</p>
+        <p>CHAT</p>
       </div>
       <div className="chat-body">
         <ScrollToBottom className="message-container">
