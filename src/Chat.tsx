@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 
-export function Chat({ socket, username, room}) {
+interface ImessageData{
+  room: string;
+  author: string;
+  message: string;
+  time:string;
+}
+
+export function Chat({ socket, username, room}:any) {
   const [currentMessage, setCurrentMessage] = useState("");
-  const [messageList, setMessageList] = useState([]);
+  const [messageList, setMessageList] = useState<ImessageData[]>([]);
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
@@ -24,7 +31,7 @@ export function Chat({ socket, username, room}) {
   };
 
   useEffect(() => {
-    socket.on("receive_message", (data) => {
+    socket.on("receive_message", (data:ImessageData) => {
       setMessageList((list) => [...list, data]);
     });
   }, [socket]);
