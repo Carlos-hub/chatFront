@@ -24,14 +24,14 @@ export function Chat({ socket, username, room}:any) {
           new Date(Date.now()).getMinutes(),
       };
 
-      await socket.emit("send_message", messageData);
+      await socket.emit("sendMessage", messageData);
       setMessageList((list) => [...list, messageData]);
       setCurrentMessage("");
     }
   };
 
   useEffect(() => {
-    socket.on("receive_message", (data:ImessageData) => {
+    socket.on("receiveMessage", (data:ImessageData) => {
       setMessageList((list) => [...list, data]);
     });
   }, [socket]);

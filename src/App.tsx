@@ -1,9 +1,8 @@
-import "./App.css";
 import io from "socket.io-client";
 import { useState } from "react";
 import Chat from "./Chat";
-
-const socket = io("http://localhost:4999");
+import "./App.css";
+const socket = io('https://chatiot-production.up.railway.app/');
 
 function App() {
   const [username, setUsername] = useState("");
@@ -12,7 +11,7 @@ function App() {
 
   const joinRoom = () => {
     if (username !== "" && room !== "") {
-      socket.emit("join_room", room);
+      socket.emit("joinRoom", room);
       setShowChat(true);
     }
   };
